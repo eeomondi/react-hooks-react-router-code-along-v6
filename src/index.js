@@ -4,13 +4,32 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Login from "./pages/Login";
+import UserProfile from "./pages/UserProfile"; // Make sure to import UserProfile
+import ErrorPage from "./pages/ErrorPage"; // Import ErrorPage if you've created it
 
 const router = createBrowserRouter([
-    { path: "/", element: <Home /> },
-    { path: "/about", element: <About /> },
-    { path: "/login", element: <Login /> },
-    { path: "/profile/:id", element: <UserProfile /> }
-  ]);
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <ErrorPage /> // Add error handling
+  },
+  {
+    path: "/about",
+    element: <About />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/profile/:id",
+    element: <UserProfile />,
+    errorElement: <ErrorPage />
+  }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={router} />);
+
